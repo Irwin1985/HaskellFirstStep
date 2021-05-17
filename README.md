@@ -252,7 +252,7 @@ True
 ghci> 10 `elem` [3,4,5,6]
 False
 ``` 
-### Rarngos
+### Rangos
 Los rangos son muy sencillos, simplemente si queremos una secuencia numérica del 1 al 20 decimos `[1..20]`. 
 ```Haskell
 ghci> [1..20]
