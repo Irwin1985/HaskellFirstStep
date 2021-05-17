@@ -286,3 +286,63 @@ La función `replicate` toma una longitud y un elemento y produce una lista de t
 ghci> replicate 3 10
 [10,10,10]
 ``` 
+### Comprensión de listas
+Son una forma de filtrar, transformar y combinar listas.
+```Haskell
+ghci> [x*2 | x <- [1..10]]
+[2,4,6,8,10,12,14,16,18,20]
+``` 
+El ejemplo anterior itera sobre una lista de 10 elementos `[1..10]` y por cada uno genera la salida `x*2` que basicamente multiplica el elemento por 2.
+```Haskell
+ghci> [x*2 | x <- [1..10], x*2 >= 12]
+[12,14,16,18,20]
+``` 
+Este otro ejemplo itera sobre una lista de 10 elementos pero solo imprime aquellos mayores o iguales a 12. Note como se usa la expresión `x*2` en el predicado.
+Una comprensión de listas puede tomar cero, uno o más predicados separados por coma.
+
+### Tuplas
+Las tuplas se utilizan para almacenar elementos heterogéneos. En cierta forma son parecidas a las listas pero con diferencias fundamentales. La primera es que pueden contener elementos heterogéneos y la segunda es que su longitud es fija, por lo tanto hay que conocer su tamaño de antemano.
+
+Las listas se definen entre parentesis y sus elementos se separan por coma:
+```Haskell
+ghci> (1, 3)
+(1,3)
+ghci> (3, 'a', "hello")
+(3,'a',"hello")
+ghci> (50, 50.4, "hello", 'b')
+(50,50.4,"hello",'b')
+``` 
+
+### Usando Pares
+Almacenar datos en pares es muy común en `Haskell` y cuando es el caso hay funciones que nos permiten manipularlos, tales funciones son:
+
+La función `fst` toma un par y retorna su primer componente.
+```Haskell
+ghci> fst (8, 11)
+8
+ghci> fst ("Wow", False)
+"Wow"
+``` 
+La función `snd` toma un par y retorna el segundo componente.
+```Haskell
+ghci> snd (8, 11)
+11
+ghci> snd ("Wow", False)
+False
+``` 
+`NOTA:` estas funciones solo trabajan con tuplas pares.
+
+La función `zip` toma 2 listas y les aplica un join formando elementos pares entre ambas listas produciendo una tercera lista.
+```Haskell
+ghci> zip [1,2,3,4,5] [5,5,5,5,5]
+[(1,5),(2,5),(3,5),(4,5),(5,5)]
+ghci> zip [1..5] ["one", "two", "three", "four", "five"]
+[(1,"one"),(2,"two"),(3,"three"),(4,"four"),(5,"five")]
+``` 
+Si la longitud de ambas listas es distinta entonces aplica el join sobre los elementos que encajen:
+```Haskell
+ghci> zip [5,3,2,6,2,7,2,5,4,6,6] ["im","a","turtle"]
+[(5,"im"),(3,"a"),(2,"turtle")]
+``` 
+
+
